@@ -1,11 +1,11 @@
 
-          var Display=function (id,options)
+          var DisplayModel=function(id,option)
       {
-              this.options:{
-                 width:"420";
-                 height:"150";
-
+      this.option={
+        height:"420",
+        width: "150"
       }
-            this.id=id;
 
+
+            this.id=id;
     }

@@ -1,26 +1,48 @@
     //create view of calculator to combine the display and buttons View.
 
-     var CalculatorView=function(model)
+        var CalculatorView=function(model,display,numberButton,operatorButton,generalButton)
      {
-          var init=function()
-       {
-            this.renderCalculator();
-       }
-        this.renderCalculator=function(){
-        this.calView=document.createElement("div");
-        this.calView.id=calculatorId;
+             var calView;
+             var init = function ()
+           {
+                 createCalElement();
+           }
+             var createCalElement = function ()
+           {
+                 calView = document.createElement("div");
+                 calView.id = model.id;
+              var displayView = document.createElement("div");
+                 displayView.appendChild(display);
+                 calView.appendChild(displayView);
 
-        this.calView.displayView=document.createElement("div");
-        this.calView.appendChiled(this.calView.displayview);
+              var numberButtonGroup = document.createElement("div");
+                 for (var i = 0; i < numericButtons.length; i++) {
+                     numberButtonGroup.appendChild(numericButtons[i]);
+                 }
+                 calView.appendChild(numberButtonGroup);
 
-        this.calView.numericButtonGroup=document.createElement("div");
-        this.calView.appendChiled(this.calView.numericButtonGroup);
+                 var operatorButtonGroup = document.createElement("div");
+                 for (var i = 0; i < operatorButtons.length; i++) {
+                     operatorButtonGroup.appendChild(operatorButtons[i]);
+                 }
+                 calView.appendChild(operatorButtonGroup);
+                 var break1 = document.createElement("br");
+                 calView.appendChild(break1);
 
-        this.calculatorId.operationButtonGroup=document.createElement("div");
-        this.calView.appendChiled(this.calView.operationButtonGroup);
-     }
-         init();
 
-            return this.calView;
+                 this.design();
+             }
+             this.design = function () {
+                 document.body.appendChild(calView);
+                 var break1 = document.createElement("br");
+                 document.body.appendChild(break1);
+             }
+             this.init();
+             return this;
+         }
+
+
+
+
 
      }

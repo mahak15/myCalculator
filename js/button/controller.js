@@ -1,18 +1,29 @@
 
 
-     var ButtonController = function (id, value, options) {
-        var init = function() {
-            this.btnModel = new ButtonModel(id, value, options);
-            this.btnView = new ButtonView(this.btnModel);
+     var ButtonController = function (id, value, options)
+     {
+            var buttonModel;
+            var buttonView;
 
-            this.btnView.onclick = function(event) {
+             var init = function()
+         {
+            this.buttonModel = new ButtonModel(id, value, options);
+            this.buttonView = new ButtonView(this.buttonModel);
+         }
+         //create onclick handler event on button.
+        /*    this.buttonView.onclick = function(event)
+             {
                 this.onClickHandler(event, id, value);
             }
         }
-        this.onClickHandler = function (event, id, value) {
+             this.onClickHandler = function (event, id, value)
+         {
 
-
-        }
-        init();
-        return this;//return Object.
+         }*/
+             this.getButtonElement=function(model)
+         {
+             return this.buttonView;
+         }
+            init();
+            return this;   //return Object.
      }

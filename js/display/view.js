@@ -7,15 +7,15 @@
 
         this.createDisplayElement()
    {
-     this.displayElement=document.createDisplayElement("text");
+     this.displayElement=document.createDisplayElement("input");
+     this.displayElement.setAttribute("type",'text');
      this.displayElement.id=model.id;
-     this.displayElement.style.width=model.width;
-     this.displayElement.style.height=model.height;
+     this.displayElement.style.height=model.option.height;
+     this.displayElement.style.width=model.option.width;
 
    }
-   init();
-
-   return displayElement;
+        this.init();
+        return displayElement;
 
 
  }
