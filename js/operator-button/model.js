@@ -1,10 +1,6 @@
+var OperatorButtonModel=function(id, value, options) {
+    ButtonModel.call(this, id, value, options);
+}
 
- var OperatorButtonModel=function(id,value,options)
- {
-
-               this. options={
-                                 type:" operatorButton"
-                }
-     this.id=id;
-     this.value=value;
- }
+OperatorButtonModel.prototype = Object.create(new ButtonModel());
+OperatorButtonModel.prototype.constructor = OperatorButtonModel;

@@ -1,18 +1,11 @@
+var CalculatorModel=function(id,options) {
 
-         var CalculatorModel=function(id,options)
-     {
-
-                this.options=
-             {
-
-                            operatorButtons:['+','-','*','/','%','=','.'],
-                            numberButton: [1,2,3,4,5,6,7,8,9,0],
-                            generalButton:['AC','C','ON/OFF']
-
-
-             }
-
-
-                this.id=id;
-
-      }
+    this.options = {
+        height:"80",
+        width:"80",
+        operatorButtons:['+','-','*','/','%','=','.'],
+        numberButtons: ['1','2','3','4','5','6','7','8','9','0'],
+        generalButtons:['AC','C','ON/OFF','=','.']
+    }
+    this.id=id;
+}

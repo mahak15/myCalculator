@@ -1,15 +1,17 @@
-
-    var ButtonView = function (model) {
-            var init = function() {
-                this.createButtonElement();
-            }
-            this.createButtonElement = function()
-            {
-                this.buttonElement = document.createElement("button");   //creating DOM object for button.
-                this.buttonElement.innerHTML = model.value;    //use innerHTML for labrl to show on html button on screen.
-                this.buttonElement.id=model.id;
-                this.buttonElement.option.buttonStyle=model.option.buttonStyle;
-            }
-          init();
-          return this.buttonElement; //return DOM object in button controller.
+var ButtonView = function (model) {
+    var buttonElement;
+    var init = function() {
+        if(model) {
+        createButtonElement();
+        }
+    }
+    var createButtonElement = function() {
+       buttonElement = document.createElement("button");
+       buttonElement.innerHTML = model.value;    //use innerHTML for value to show on html button on screen.
+       buttonElement.id=model.id;
+       buttonElement.style.height=model.options.height;
+       buttonElement.style.width=model.options.width;
+    }
+    init();
+  return buttonElement; //return DOM object in button controller.
 }

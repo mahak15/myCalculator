@@ -1,21 +1,18 @@
     var DisplayView=function(model)
  {
-       this.init=function()
-    {
-       this.createDisplayElement();
+ var displayElement;
+       var init=function() {
+       createDisplayElement();
     }
 
-        this.createDisplayElement()
-   {
-     this.displayElement=document.createDisplayElement("input");
-     this.displayElement.setAttribute("type",'text');
-     this.displayElement.id=model.id;
-     this.displayElement.style.height=model.option.height;
-     this.displayElement.style.width=model.option.width;
+      var  createDisplayElement=function() {
+         displayElement=document.createElement("input");
+         displayElement.setAttribute("type",'text');
+         displayElement.id=model.id;
+         displayElement.style.height=model.option.height;
+         displayElement.style.width=model.option.width;
 
    }
-        this.init();
-        return displayElement;
-
-
+    init();
+    return displayElement;
  }

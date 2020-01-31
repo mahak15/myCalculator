@@ -1,48 +1,41 @@
-    //create view of calculator to combine the display and buttons View.
+//create view of calculator to combine the display and buttons View.
 
-        var CalculatorView=function(model,display,numberButton,operatorButton,generalButton)
-     {
-             var calView;
-             var init = function ()
-           {
-                 createCalElement();
-           }
-             var createCalElement = function ()
-           {
-                 calView = document.createElement("div");
-                 calView.id = model.id;
-              var displayView = document.createElement("div");
-                 displayView.appendChild(display);
-                 calView.appendChild(displayView);
-
-              var numberButtonGroup = document.createElement("div");
-                 for (var i = 0; i < numericButtons.length; i++) {
-                     numberButtonGroup.appendChild(numericButtons[i]);
-                 }
-                 calView.appendChild(numberButtonGroup);
-
-                 var operatorButtonGroup = document.createElement("div");
-                 for (var i = 0; i < operatorButtons.length; i++) {
-                     operatorButtonGroup.appendChild(operatorButtons[i]);
-                 }
-                 calView.appendChild(operatorButtonGroup);
-                 var break1 = document.createElement("br");
-                 calView.appendChild(break1);
+var CalculatorView=function(model, display, numberButtons, operatorButtons, generalButtons) {
+    var calculatorElement;
 
 
-                 this.design();
-             }
-             this.design = function () {
-                 document.body.appendChild(calView);
-                 var break1 = document.createElement("br");
-                 document.body.appendChild(break1);
-             }
-             this.init();
-             return this;
-         }
+    var init=function()  {
+    createCalculatorElement();
+    }
+
+    var createCalculatorElement = function() {
+        calculatorElement = document.createElement('div');
+        calculatorElement.id = model.id;
+        calculatorElement.style.height = model.options.height;
+        calculatorElement.style.width = model.options.width;
+        calculatorElement.appendChild(display);
+        calculatorElement.appendChild(renderButtons('number', numberButtons));
+        calculatorElement.appendChild(renderButtons('operator', operatorButtons));
+        calculatorElement.appendChild(renderButtons('general', generalButtons));
+    }
+
+    var renderButtons = function(type, buttons) {
+        var btnGroup = document.createElement('div');
+        btnGroup.className = 'btn-grp-'+type;
+        for(var i = 0; i < buttons.length ; i++) {
+            btnGroup.appendChild(buttons[i]);
+        }
+        return btnGroup;
+    }
+    this.render = function () {
+        document.body.appendChild(calculatorElement);
+    }
+
+    init();
+    return this;
+}
 
 
 
 
 
-     }

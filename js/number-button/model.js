@@ -1,9 +1,6 @@
+var NumberButtonModel=function(id, value, options) {
+    ButtonModel.call(this, id, value, options);
+}
 
-        var NumberButtonModel=function(id,value,options)
-    {
-      this. options={
-                        numberButtonStyle:"blue"
-       }
-       this.id=id;
-       this.value=value;
- }
+NumberButtonModel.prototype = Object.create(new ButtonModel());
+NumberButtonModel.prototype.constructor = NumberButtonModel;
