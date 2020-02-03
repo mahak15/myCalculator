@@ -7,6 +7,7 @@ var ButtonView = function (model) {
     }
     var createButtonElement = function() {
        buttonElement = document.createElement("button");
+       buttonElement.setAttribute('class','button');
        buttonElement.innerHTML = model.value;    //use innerHTML for value to show on html button on screen.
        buttonElement.id=model.id;
        buttonElement.style.height=model.options.height;

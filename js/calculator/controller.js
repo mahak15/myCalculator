@@ -1,7 +1,8 @@
 var CalculatorController = function(id, options) {
 
-    var calView, calModel, generalButtons=[], numberButtons=[], operatorButtons=[], display, disId, calDom;
-
+    var calView, calModel, generalButtons=[], numberButtons=[], operatorButtons=[], disId, calDom;
+	this.displayCtl;
+	var scope = this;
     var init = function() {
         designCalculator(id);
     }
@@ -9,11 +10,13 @@ var CalculatorController = function(id, options) {
     var designCalculator = function(id) {
         calModel = new CalculatorModel(id,options);
         disId = id;
-        display = new DisplayController(disId," ", options).getDisplayElement();
-        createNumberButtonElement();
-        createOperatorButtonElement();
+        scope.displayCtl = new DisplayController(disId," ", options);
         createGeneralButtonElement();
-        calView = new CalculatorView(calModel, display, numberButtons, operatorButtons, generalButtons);
+        createOperatorButtonElement();
+        createNumberButtonElement();
+
+
+        calView = new CalculatorView(calModel, scope.displayCtl.getDisplayElement(), numberButtons, operatorButtons, generalButtons);
         calView.render();
     }
 
@@ -21,9 +24,9 @@ var CalculatorController = function(id, options) {
         var  buttonCtl;
         for (var i = 0; i < calModel.options.numberButtons.length; i++) {
             buttonCtl = new NumberButtonController('no-btn-'+i, calModel.options.numberButtons[i]);
-            buttonCtl.onClickHandler = function ( id, value,event) {
-
-            }
+            buttonCtl.onClickHandler = function ( id, value) {
+                scope.displayCtl.addToExpression(value);
+           }
             numberButtons.push(buttonCtl.getButtonElement());
         }
     }
@@ -31,11 +34,12 @@ var CalculatorController = function(id, options) {
 
     var createOperatorButtonElement = function () {
         var  buttonCtl;
-        for (var i = 0; i < calModel.options.operatorButtons.length; i++) {
-            buttonCtl = new OperatorButtonController('no-btn-'+i, calModel.options.operatorButtons[i]);
-            buttonCtl.onClickHandler = function ( id, value,event) {
 
-            }
+        for (var i = 0; i < calModel.options.operatorButtons.length; i++) {
+            buttonCtl = new OperatorButtonController('op-btn-'+i, calModel.options.operatorButtons[i]);
+            buttonCtl.onClickHandler = function ( id, value,event) {
+				 scope.displayCtl.addToExpression(value);
+			}
             operatorButtons.push(buttonCtl.getButtonElement());
         }
     }
@@ -45,11 +49,26 @@ var CalculatorController = function(id, options) {
     var createGeneralButtonElement = function () {
         var  buttonCtl;
         for (var i = 0; i < calModel.options.generalButtons.length; i++) {
-            buttonCtl = new NumberButtonController('no-btn-'+i, calModel.options.numberButtons[i]);
+            buttonCtl = new NumberButtonController('no-btn-'+i, calModel.options.generalButtons[i]);
             buttonCtl.onClickHandler = function ( id, value,event) {
 
-            }
-            generalButtons.push(buttonCtl.getButtonElement());
+                    if(value == '='){
+                        scope.displayCtl.setExpression(eval(scope.displayCtl.getExpression()));
+                    }
+                    else if(value == 'C'){
+                        value = " ";
+                        scope.displayCtl.setExpression(value);
+                        scope.displayCtl.getExpression();
+					}
+					else if(value == '.'){
+						 scope.displayCtl.addToExpression(value);
+					}
+					else{
+
+					}
+			}
+
+			generalButtons.push(buttonCtl.getButtonElement());
         }
     }
 

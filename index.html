@@ -3,6 +3,8 @@
 
 <head>
     <title>"MY CALCULATOR"</title>
+
+    <link rel="stylesheet" href="style\style.css">
     <!--including the JavaScript files for display -->
 
     <script src="./js/display/model.js"></script>
@@ -32,9 +34,13 @@
 </head>
 
     <body>
+    <div id="d"></div>
+    <br>
      <script>
-        new CalculatorController(1);
-        new CalculatorController(2);
+     var n=1;
+     for(i=1 ; i<=n ; i++)
+        new CalculatorController(i);
+
      </script>
     </body>
 

@@ -6,8 +6,9 @@
     }
 
       var  createDisplayElement=function() {
-         displayElement=document.createElement("input");
-         displayElement.setAttribute("type",'text');
+         displayElement=document.createElement("div");
+         displayElement.setAttribute('class','display');
+        // displayElement.setAttribute("type",'text');
          displayElement.id=model.id;
          displayElement.style.height=model.option.height;
          displayElement.style.width=model.option.width;
