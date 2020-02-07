@@ -15,12 +15,20 @@ var CalculatorView=function(model, display, numberButtons, operatorButtons, gene
         calculatorElement.style.height = model.options.height;
         calculatorElement.style.width = model.options.width;
         calculatorElement.appendChild(display);
-        calculatorElement.appendChild(renderButtons('general', generalButtons));
-        calculatorElement.appendChild(renderButtons('operator', operatorButtons));
-        calculatorElement.appendChild(renderButtons('number', numberButtons));
+        var mainButton = document.createElement('div');
+        mainButton.setAttribute('class','mainButton');
+        calculatorElement.appendChild(mainButton);
+         var button = document.createElement('div');
+             button.setAttribute('class','button-grp');
+             button.appendChild(renderButtons('general', generalButtons));
+             button.appendChild(renderButtons('number', numberButtons));
+             mainButton.appendChild(button);
+			 mainButton.appendChild(renderButtons('operator', operatorButtons));
+
 	}
 
     var renderButtons = function(type, buttons) {
+
         var btnGroup = document.createElement('div');
         btnGroup.setAttribute('class', 'btn-grp'+type);
         btnGroup.className = 'btn-grp-'+type;

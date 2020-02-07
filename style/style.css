@@ -1,29 +1,79 @@
 .calculatorView{
-		background-color:black;
-        border: 1px solid powderblue;
-        padding: 15px;
-        width : 150px;
-        height : 200px;
+	height:263px;
+	width:280px;
+	display : inline-block;
+	padding: 3px 2px 2px 2px;
+	background-color: #404040;
+	opacity:2;
 
 }
-.button{
-		float:left;
-        border: grey;
-        display:inline-block;
-        padding: 1px;
-        height : 100px;
-        width : 100px;
-        background-color : grey;
+
+
+button {
+	color : white;
+	border:grey;
+	background-color: #282828;
+	height: 40px;
+	width: 70px;
+	text-align: center;
+	text-transform: uppercase;
+	font-weight: bold;
+	font-family: Helvetica;
+	font-size: 18px;
+	opacity: 1;
+	transition:0.7s;
+
+	}
+
+button:hover{
+	color : white;
+	background-color: #707070;
+	height: 40px;
+	width: 70px;
+	text-align: center;
+	text-transform: uppercase;
+	font-weight: bold;
+	font-family: Helvetica;
+	font-size: 18px;
 }
+.mainButton{
+    display:flex;
+    height:200px;
+}
+.button-grp{
+   width:280px;
+   height:210px;
+}
+
+.btn-grp-general{
+
+}
+
+.btn-grp-number{
+width:210px;
+
+
+}
+.btn-grp-operator{
+   float:right;
+
+
+}
+
+
+
 
 .display{
- align: center;
- height : 20%;
- width : 100%;
- color : black;
- text-align : right;
- background-color:white;
 
+		width : 250px;
+		height : 20px;
+		background-color: #404040;
+		display: inline-block;
+		padding: 20px 10px;
+		text-align: right;
+		font-size : 38px;
+		font-family: Helvetica;
+		color: white;
 
 }
 

@@ -1,8 +1,8 @@
 //Button module to set button variables.
 var ButtonModel = function (id, value, options) {
        this.options = {
-               width:"80",
-               height:"80"
+               width:"100",
+               height:"100"
     }
     this.id = id;
     this.value = value;
